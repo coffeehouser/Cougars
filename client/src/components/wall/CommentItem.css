@@ -1,0 +1,225 @@
+/*
+ * Comment Item - Dark D&D Theme
+ * Individual comment cards with medieval styling
+ */
+
+.comment-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--bg-dark);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.comment-item:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+}
+
+.comment-item-reply {
+  margin-left: 50px;
+  margin-top: var(--spacing-md);
+  background: var(--bg-medium);
+  border-color: var(--border-medium);
+}
+
+.comment-author-link {
+  flex-shrink: 0;
+}
+
+.comment-author-image {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 2px solid var(--gold-dark);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.comment-author-image:hover {
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.comment-item-reply .comment-author-image {
+  width: 42px;
+  height: 42px;
+}
+
+.comment-content-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.comment-author-name {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: var(--gold-medium);
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: color var(--transition-fast);
+}
+
+.comment-author-name:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+.comment-time {
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.comment-edited {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.comment-text {
+  font-family: var(--font-secondary);
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+  line-height: 1.7;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+.comment-photo {
+  margin: var(--spacing-md) 0;
+  max-width: 500px;
+}
+
+.comment-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.comment-photo img:hover {
+  opacity: 0.9;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.comment-actions {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+}
+
+.comment-action-btn {
+  font-family: var(--font-primary);
+  background: none;
+  border: none;
+  color: var(--primary-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color var(--transition-fast);
+}
+
+.comment-action-btn:hover {
+  color: var(--gold-medium);
+  text-decoration: underline;
+}
+
+.comment-delete-btn {
+  color: var(--red-medium);
+}
+
+.comment-delete-btn:hover {
+  color: var(--red-light);
+}
+
+.comment-edit-form {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-medium);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+}
+
+.comment-edit-textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-dark);
+  resize: vertical;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+  transition: all var(--transition-fast);
+}
+
+.comment-edit-textarea:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.comment-edit-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+}
+
+.comment-replies {
+  margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .comment-item {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .comment-item-reply {
+    margin-left: var(--spacing-lg);
+  }
+
+  .comment-author-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .comment-item-reply .comment-author-image {
+    width: 36px;
+    height: 36px;
+  }
+
+  .comment-actions {
+    gap: var(--spacing-md);
+  }
+
+  .comment-photo {
+    max-width: 100%;
+  }
+}

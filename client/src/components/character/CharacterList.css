@@ -1,0 +1,137 @@
+/* CharacterList.css - Dark D&D Theme */
+
+.characters-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.characters-container h1 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px var(--gold-glow);
+  margin-bottom: 30px;
+}
+
+.create-new {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.character-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(212, 175, 55, 0.3);
+  border-color: var(--border-gold);
+}
+
+.card-banner {
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
+  position: relative;
+}
+
+.banner-overlay-card {
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  height: 100%;
+}
+
+.card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  margin-top: -40px;
+}
+
+.card-profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  border: 3px solid var(--border-gold);
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.3);
+  margin-bottom: 10px;
+}
+
+.card-info h3 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 20px;
+  margin: 0 0 5px 0;
+  text-shadow: 0 0 15px var(--gold-glow);
+}
+
+.card-subtitle {
+  font-family: var(--font-secondary);
+  color: var(--text-primary);
+  font-size: 14px;
+  margin: 0 0 5px 0;
+}
+
+.card-owner {
+  font-family: var(--font-secondary);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-style: italic;
+  margin: 0 0 10px 0;
+}
+
+.card-stats {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-dark);
+  width: 100%;
+}
+
+.characters-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.characters-empty h2 {
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .characters-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+  }
+}

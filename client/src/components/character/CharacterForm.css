@@ -1,0 +1,297 @@
+/*
+ * Character Form - Dark D&D Theme
+ * Medieval fantasy character creation form
+ */
+
+.character-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.character-form-container h1 {
+  font-family: var(--font-primary);
+  color: var(--gold-medium);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.character-form {
+  background: var(--bg-card);
+  border: 3px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* Parchment texture */
+.character-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.form-section {
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.form-section h2 {
+  font-family: var(--font-primary);
+  color: var(--gold-medium);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--border-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Image Drop Zones */
+.image-drop-zone {
+  border: 2px dashed var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.image-drop-zone:hover {
+  border-color: var(--gold-medium);
+  background: var(--bg-hover);
+  box-shadow: var(--glow-gold);
+}
+
+.image-drop-zone.drag-active {
+  border-color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+  border-width: 3px;
+  box-shadow: var(--glow-gold);
+}
+
+.banner-drop {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-drop {
+  max-width: 350px;
+  min-height: 350px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drop-zone-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.drop-zone-content p {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.file-hint {
+  font-family: var(--font-secondary);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-gold);
+}
+
+.banner-preview {
+  width: 100%;
+  height: 200px;
+}
+
+.profile-preview {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--radius-lg);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.stat-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-input label {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.stat-input input {
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+  background: var(--bg-dark);
+  color: var(--gold-light);
+  transition: all var(--transition-fast);
+}
+
+.stat-input input:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  resize: vertical;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: all var(--transition-fast);
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  color: var(--text-muted);
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
+/* Select */
+select {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 2px solid var(--border-gold);
+  position: relative;
+  z-index: 1;
+}
+
+.form-actions button {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .character-form-container {
+    padding: var(--spacing-lg);
+  }
+
+  .character-form {
+    padding: var(--spacing-xl);
+  }
+
+  .character-form-container h1 {
+    font-size: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-drop {
+    max-width: 100%;
+    min-height: 250px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,93 @@
+/* Import Dark D&D Theme */
+@import './styles/theme.css';
+@import './styles/decorative.css';
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Reset & Base Styles (theme.css handles most of this) */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* React Toastify Theme Overrides */
+.Toastify__toast {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-dark) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-family: var(--font-secondary) !important;
+}
+
+.Toastify__toast--success {
+  border-color: var(--green-medium) !important;
+}
+
+.Toastify__toast--error {
+  border-color: var(--red-medium) !important;
+}
+
+.Toastify__toast--info {
+  border-color: var(--blue-medium) !important;
+}
+
+.Toastify__toast--warning {
+  border-color: var(--gold-medium) !important;
+}
+
+.Toastify__progress-bar {
+  background: linear-gradient(90deg, var(--gold-medium), var(--gold-light)) !important;
+}
+
+/* Loading States */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--spacing-md);
+}
+
+.loading-message {
+  font-family: var(--font-primary);
+  color: var(--gold-medium);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* Error States */
+.error-container {
+  background: var(--red-dark);
+  border: 2px solid var(--red-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg);
+  text-align: center;
+}
+
+.error-message {
+  color: var(--red-light);
+  font-weight: 600;
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-muted);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.empty-state-message {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-lg);
+}

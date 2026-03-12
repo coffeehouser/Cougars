@@ -1,0 +1,241 @@
+/* BannerEditor.css - Dark D&D Theme */
+
+.banner-editor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.banner-editor-modal {
+  background: var(--bg-card);
+  border: 3px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 50px var(--gold-glow);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.banner-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 2px solid var(--border-gold);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+}
+
+.banner-editor-header h3 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+  transform: rotate(90deg);
+}
+
+.banner-editor-instructions {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-dark);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.banner-editor-instructions p {
+  font-family: var(--font-secondary);
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.banner-preview-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: var(--bg-darkest);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.banner-preview-container:active {
+  cursor: grabbing;
+}
+
+.banner-preview-image {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  max-width: none;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  transition: opacity 0.1s;
+}
+
+.banner-preview-image.dragging {
+  opacity: 0.9;
+}
+
+.banner-overlay-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+  background-size: 33.33% 33.33%;
+  opacity: 0.5;
+}
+
+.banner-editor-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding: var(--spacing-lg);
+  background: var(--bg-dark);
+  border-top: 2px solid var(--border-dark);
+}
+
+.banner-editor-actions .btn-primary,
+.banner-editor-actions .btn-secondary {
+  font-family: var(--font-primary);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 2px solid;
+}
+
+.banner-editor-actions .btn-primary {
+  background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+  color: var(--bg-darkest);
+  border-color: var(--gold-medium);
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.banner-editor-actions .btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.banner-editor-actions .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-color: var(--border-dark);
+}
+
+.banner-editor-actions .btn-secondary:hover {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  border-color: var(--border-gold);
+}
+
+@media (max-width: 768px) {
+  .banner-editor-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .banner-editor-header {
+    padding: var(--spacing-md);
+  }
+
+  .banner-editor-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .banner-preview-container {
+    height: 200px;
+  }
+
+  .banner-editor-actions {
+    flex-direction: column;
+  }
+
+  .banner-editor-actions button {
+    width: 100%;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+  .banner-preview-container {
+    cursor: default;
+  }
+
+  .banner-preview-image {
+    cursor: default;
+  }
+}

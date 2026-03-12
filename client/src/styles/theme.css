@@ -1,0 +1,442 @@
+/*
+ * Dark D&D Theme - Global Variables & Styles
+ * Fantasy-inspired dark theme with medieval aesthetics
+ */
+
+:root {
+  /* === Color Palette === */
+
+  /* Primary Colors - Deep Purple/Mystic */
+  --primary-dark: #1a0f2e;        /* Deep purple-black */
+  --primary-medium: #2d1b4e;      /* Rich purple */
+  --primary-light: #4a2c6b;       /* Lighter purple */
+  --primary-accent: #6b46c1;      /* Bright mystic purple */
+
+  /* Secondary Colors - Gold/Amber */
+  --gold-dark: #8b6914;           /* Dark gold */
+  --gold-medium: #d4af37;         /* Classic gold */
+  --gold-light: #f4d03f;          /* Bright gold */
+  --gold-glow: #ffd700;           /* Golden glow */
+
+  /* Background Colors */
+  --bg-darkest: #0d0a15;          /* Almost black */
+  --bg-dark: #1a1425;             /* Dark purple-black */
+  --bg-medium: #2a1f3d;           /* Medium dark */
+  --bg-light: #3d2f5a;            /* Lighter purple */
+  --bg-card: #251a38;             /* Card background */
+  --bg-hover: #32254a;            /* Hover state */
+
+  /* Text Colors */
+  --text-primary: #e8dff5;        /* Light purple-white */
+  --text-secondary: #b8a8d4;      /* Muted purple */
+  --text-muted: #8a7a9d;          /* Very muted */
+  --text-disabled: #5a4a6d;       /* Disabled state */
+
+  /* Accent Colors */
+  --red-dark: #7a1a1a;            /* Dark red */
+  --red-medium: #c53030;          /* Medium red */
+  --red-light: #fc8181;           /* Light red */
+
+  --green-dark: #1a4d2e;          /* Dark green */
+  --green-medium: #2f855a;        /* Medium green */
+  --green-light: #68d391;         /* Light green */
+
+  --blue-dark: #1e3a5f;           /* Dark blue */
+  --blue-medium: #2c5282;         /* Medium blue */
+  --blue-light: #63b3ed;          /* Light blue */
+
+  /* Border & Divider Colors */
+  --border-dark: #3d2f5a;         /* Dark border */
+  --border-medium: #4a3b6b;       /* Medium border */
+  --border-light: #6b5a8a;        /* Light border */
+  --border-gold: #8b6914;         /* Gold border */
+
+  /* Shadow & Glow */
+  --shadow-sm: 0 2px 8px rgba(13, 10, 21, 0.4);
+  --shadow-md: 0 4px 16px rgba(13, 10, 21, 0.6);
+  --shadow-lg: 0 8px 32px rgba(13, 10, 21, 0.8);
+  --glow-purple: 0 0 20px rgba(107, 70, 193, 0.3);
+  --glow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+
+  /* === Typography === */
+  --font-primary: 'Cinzel', 'Georgia', serif;          /* Headings - medieval */
+  --font-secondary: 'Spectral', 'Times New Roman', serif;  /* Body - elegant */
+  --font-body: 'Lora', 'Georgia', serif;               /* Alternative body */
+  --font-mono: 'Courier New', monospace;               /* Code/stats */
+
+  /* === Spacing === */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* === Border Radius === */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* === Transitions === */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* === Global Styles === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-darkest);
+  background-image:
+    radial-gradient(ellipse at top, rgba(107, 70, 193, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(26, 15, 46, 0.5) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Typography === */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--glow-gold);
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--gold-medium);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--gold-light);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--gold-medium);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+/* === Scrollbar Styling === */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-accent), var(--primary-medium));
+  border-radius: var(--radius-md);
+  border: 2px solid var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gold-medium), var(--gold-dark));
+}
+
+/* === Selection === */
+
+::selection {
+  background: var(--primary-accent);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: var(--primary-accent);
+  color: var(--text-primary);
+}
+
+/* === Card Styles === */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-lg), var(--glow-gold);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  border-bottom: 2px solid var(--border-gold);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* === Button Styles === */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+  color: var(--bg-darkest);
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--bg-medium);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-light);
+  border-color: var(--border-light);
+}
+
+.btn-danger {
+  background: var(--red-medium);
+  color: var(--text-primary);
+  border-color: var(--red-dark);
+}
+
+.btn-danger:hover {
+  background: var(--red-light);
+  box-shadow: 0 0 20px rgba(252, 129, 129, 0.3);
+}
+
+.btn-success {
+  background: var(--green-medium);
+  color: var(--text-primary);
+  border-color: var(--green-dark);
+}
+
+.btn-success:hover {
+  background: var(--green-light);
+  box-shadow: 0 0 20px rgba(104, 211, 145, 0.3);
+}
+
+.btn-small {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.8rem;
+}
+
+.btn-large {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1rem;
+}
+
+/* === Form Styles === */
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold-medium);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-dark);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-help {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* === Decorative Elements === */
+
+.ornament-top,
+.ornament-bottom {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--gold-medium) 50%,
+    transparent
+  );
+  margin: var(--spacing-lg) 0;
+}
+
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--border-gold) 20%,
+    var(--border-gold) 80%,
+    transparent
+  );
+  margin: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.section-divider::before {
+  content: '⚔';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-card);
+  padding: 0 var(--spacing-md);
+  color: var(--gold-medium);
+  font-size: 1.5rem;
+}
+
+/* === Loading Spinner === */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-dark);
+  border-top-color: var(--gold-medium);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* === Utility Classes === */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-gold { color: var(--gold-medium); }
+.text-purple { color: var(--primary-accent); }
+.text-muted { color: var(--text-muted); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+/* === Responsive === */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .card {
+    padding: var(--spacing-md);
+  }
+}

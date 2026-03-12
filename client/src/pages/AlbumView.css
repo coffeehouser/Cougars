@@ -1,0 +1,97 @@
+/* AlbumView.css - Dark D&D Theme */
+
+.album-view {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.album-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.album-header-left {
+  flex: 1;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-family: var(--font-primary);
+  color: var(--primary-accent);
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--gold-light);
+  text-decoration: none;
+}
+
+.album-view h1 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.album-description-full {
+  font-family: var(--font-secondary);
+  color: var(--text-primary);
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.album-meta {
+  font-family: var(--font-secondary);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: italic;
+  margin: 10px 0 0 0;
+}
+
+.album-header-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.upload-section {
+  background: var(--bg-card);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  margin-bottom: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 768px) {
+  .album-header {
+    flex-direction: column;
+  }
+
+  .album-header-actions {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .album-header-actions button {
+    flex: 1;
+  }
+
+  .album-view h1 {
+    font-size: 24px;
+  }
+}

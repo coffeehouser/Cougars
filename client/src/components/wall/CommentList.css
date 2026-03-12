@@ -1,0 +1,20 @@
+/* CommentList.css - Dark D&D Theme */
+
+.comments-list {
+  margin-top: 20px;
+}
+
+.comments-empty {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: var(--font-secondary);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.comments-loading {
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-secondary);
+  color: var(--text-muted);
+}

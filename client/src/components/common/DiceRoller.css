@@ -1,0 +1,372 @@
+/* DiceRoller.css - Dark D&D Theme */
+
+.dice-roller-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.dice-roller-card,
+.roll-history-card {
+  background: var(--bg-card);
+  border: 3px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-lg), var(--glow-gold);
+}
+
+.dice-roller-card h2 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0 0 25px 0;
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.dice-selection {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.die-button {
+  font-family: var(--font-primary);
+  padding: 10px 16px;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.die-button:hover:not(:disabled) {
+  border-color: var(--gold-medium);
+  color: var(--gold-light);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.die-button.active {
+  background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+  color: var(--bg-darkest);
+  border-color: var(--gold-medium);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.die-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dice-display {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-dark);
+  border: 3px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dice-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(ellipse at 30% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(107, 70, 193, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.dice-display.rolling {
+  animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-5px) rotate(-2deg); }
+  75% { transform: translateX(5px) rotate(2deg); }
+}
+
+.dice-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+  animation: resultAppear 0.3s ease-out;
+}
+
+@keyframes resultAppear {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.result-number {
+  font-family: var(--font-primary);
+  font-size: 80px;
+  font-weight: bold;
+  color: var(--gold-light);
+  text-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(212, 175, 55, 0.5);
+  line-height: 1;
+}
+
+.result-label {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dice-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  opacity: 0.5;
+}
+
+.dice-placeholder span {
+  font-size: 60px;
+}
+
+.dice-placeholder p {
+  font-family: var(--font-secondary);
+  color: var(--text-muted);
+  font-size: 16px;
+  font-style: italic;
+}
+
+.roll-button {
+  width: 100%;
+  padding: 18px;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--primary-accent), var(--primary-medium));
+  color: var(--text-primary);
+  border: 2px solid var(--primary-accent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.roll-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+  border-color: var(--gold-medium);
+  box-shadow: var(--shadow-lg), 0 0 30px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+.roll-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Roll History */
+.roll-history-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border-gold);
+}
+
+.history-header h3 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 0 15px var(--gold-glow);
+}
+
+.clear-history-btn {
+  font-family: var(--font-primary);
+  padding: 8px 16px;
+  background: var(--bg-dark);
+  color: var(--red-medium);
+  border: 2px solid var(--red-dark);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.clear-history-btn:hover {
+  background: var(--red-dark);
+  color: var(--text-primary);
+  box-shadow: 0 0 15px rgba(197, 48, 48, 0.3);
+}
+
+.roll-history-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  display: grid;
+  grid-template-columns: 60px 60px 1fr;
+  gap: 15px;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg-dark);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.history-item:hover {
+  border-color: var(--border-gold);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.history-die {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--primary-accent);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.history-result {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--gold-medium);
+  text-align: center;
+  text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.history-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-character {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.history-time {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Scrollbar styling */
+.roll-history-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.roll-history-list::-webkit-scrollbar-track {
+  background: var(--bg-darkest);
+  border-radius: 4px;
+}
+
+.roll-history-list::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 4px;
+}
+
+.roll-history-list::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+@media (max-width: 968px) {
+  .dice-roller-container {
+    grid-template-columns: 1fr;
+  }
+
+  .roll-history-card {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dice-selection {
+    gap: 8px;
+  }
+
+  .die-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .result-number {
+    font-size: 60px;
+  }
+
+  .result-label {
+    font-size: 18px;
+  }
+
+  .history-item {
+    grid-template-columns: 50px 50px 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .history-result {
+    font-size: 22px;
+  }
+}

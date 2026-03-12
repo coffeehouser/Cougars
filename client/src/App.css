@@ -1,0 +1,9 @@
+/* App.css - Dark D&D Theme Overrides */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}

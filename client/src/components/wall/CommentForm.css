@@ -1,0 +1,192 @@
+/*
+ * Comment Form - Dark D&D Theme
+ * Medieval fantasy comment input with parchment texture
+ */
+
+.comment-form {
+  background: var(--bg-dark);
+  border: 2px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.comment-form-reply {
+  background: var(--bg-medium);
+  margin: var(--spacing-md) 0 var(--spacing-md) 50px;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-dark);
+}
+
+.comment-form-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.comment-form-header label {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  background: var(--bg-medium);
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.character-select:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-medium);
+  resize: vertical;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  transition: all var(--transition-fast);
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: var(--gold-medium);
+  box-shadow: var(--glow-gold);
+}
+
+.comment-textarea:disabled {
+  background: var(--bg-dark);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.photo-preview {
+  position: relative;
+  margin-bottom: var(--spacing-md);
+  max-width: 300px;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-medium);
+  box-shadow: var(--shadow-sm);
+}
+
+.remove-photo-btn {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  background: rgba(13, 10, 21, 0.9);
+  color: var(--red-light);
+  border: 2px solid var(--red-medium);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.remove-photo-btn:hover {
+  background: var(--red-dark);
+  border-color: var(--red-light);
+  box-shadow: 0 0 15px rgba(197, 48, 48, 0.5);
+}
+
+.comment-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-form-footer-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.photo-attach-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--transition-fast);
+  color: var(--gold-medium);
+  filter: drop-shadow(0 0 5px var(--gold-glow));
+}
+
+.photo-attach-btn:hover {
+  transform: scale(1.2);
+  color: var(--gold-light);
+}
+
+.character-count {
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.character-count-warning {
+  color: var(--red-light);
+  font-weight: bold;
+}
+
+.comment-form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.btn-small {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .comment-form {
+    padding: var(--spacing-md);
+  }
+
+  .comment-form-reply {
+    margin-left: var(--spacing-lg);
+  }
+
+  .comment-form-footer {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+
+  .comment-form-actions {
+    width: 100%;
+  }
+
+  .comment-form-actions button {
+    flex: 1;
+  }
+}

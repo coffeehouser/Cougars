@@ -1,0 +1,220 @@
+/* Home.css - Dark D&D Theme */
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero {
+  background: var(--bg-card);
+  border: 3px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 60px 40px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-lg), var(--glow-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(107, 70, 193, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  font-size: 48px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 30px var(--gold-glow);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-subtitle {
+  font-family: var(--font-secondary);
+  color: var(--text-secondary);
+  font-size: 18px;
+  font-style: italic;
+  margin: 0 0 30px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h2 {
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 30px 0 15px 0;
+}
+
+.hero-content p {
+  font-family: var(--font-secondary);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.home-actions a {
+  padding: 15px 40px;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.home-actions .btn-primary {
+  background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+  color: var(--bg-darkest);
+  border: 2px solid var(--gold-medium);
+}
+
+.home-actions .btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
+  box-shadow: var(--shadow-md), 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+.home-actions .btn-secondary {
+  background: var(--bg-dark);
+  color: var(--primary-accent);
+  border: 2px solid var(--primary-accent);
+}
+
+.home-actions .btn-secondary:hover {
+  background: var(--primary-accent);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(107, 70, 193, 0.4);
+  transform: translateY(-2px);
+}
+
+.features {
+  background: var(--bg-card);
+  border: 3px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 50px 40px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 40px;
+}
+
+.features h2 {
+  font-family: var(--font-primary);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 0 40px 0;
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.feature-card {
+  background: var(--bg-dark);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 30px 20px;
+  text-align: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(212, 175, 55, 0.2);
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  font-family: var(--font-primary);
+  color: var(--gold-medium);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 15px var(--gold-glow);
+}
+
+.feature-card p {
+  font-family: var(--font-secondary);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .home-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .features {
+    padding: 30px 20px;
+  }
+
+  .features h2 {
+    font-size: 28px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,24 @@
+/*
+ * Wall Container - Dark D&D Theme
+ * Comment wall with medieval aesthetic
+ */
+
+.wall-container {
+  background: var(--bg-card);
+  border: 3px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.wall-title {
+  font-family: var(--font-primary);
+  color: var(--gold-medium);
+  font-size: 1.8rem;
+  margin: 0 0 var(--spacing-lg) 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 3px double var(--border-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
