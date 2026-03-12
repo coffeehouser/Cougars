@@ -1,30 +1,24 @@
 # Quick Start Guide
 
-Get your D&D social network running in 10 minutes!
+Get the Cyber Cougars OSI Showcase running locally in about 10 minutes.
 
-## 1. Prerequisites
+## Prerequisites
 
 - Node.js 18+ installed
-- MongoDB Atlas account (free)
-- Cloudinary account (free)
+- MongoDB Atlas account (free tier at <https://cloud.mongodb.com>)
+- Cloudinary account (free tier at <https://cloudinary.com>)
 
-## 2. Clone and Install
+## 1. Install Dependencies
 
 ```bash
-# Clone the repo
-git clone <your-repo-url>
-cd DnD-space
-
-# Install all dependencies
+# From the Cougars/ project root
 npm install
 cd client && npm install && cd ..
 ```
 
-## 3. Setup Environment Variables
+## 2. Set Up Environment Variables
 
-### Backend (.env in root)
-
-Create `.env` file:
+### Backend — create `server/.env`
 
 ```env
 NODE_ENV=development
@@ -37,94 +31,69 @@ CLOUDINARY_API_SECRET=your_api_secret
 CLIENT_URL=http://localhost:5173
 ```
 
-### Frontend (client/.env)
-
-Create `client/.env` file:
+### Frontend — create `client/.env`
 
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
-## 4. Get Your Credentials
+## 3. Get Your Credentials
 
 ### MongoDB Atlas
-1. Go to [cloud.mongodb.com](https://cloud.mongodb.com)
-2. Create cluster → Connect → Get connection string
-3. Replace `<password>` with your database password
-4. Add `/dnd-social` to the end
+
+1. Go to <https://cloud.mongodb.com> and create a free cluster
+2. Click **Connect** → **Drivers** → copy the connection string
+3. Replace `<password>` with your database user's password
+4. Append `/cyber-cougars` (or any DB name) before the `?` in the string
+5. In **Network Access**, add `0.0.0.0/0` to allow connections from anywhere
 
 ### Cloudinary
-1. Go to [cloudinary.com/console](https://cloudinary.com/console)
-2. Copy Cloud Name, API Key, and API Secret from dashboard
+
+1. Go to <https://cloudinary.com/console>
+2. Copy **Cloud Name**, **API Key**, and **API Secret** from the dashboard
 
 ### JWT Secret
-Generate a random secret:
+
+Generate a secure random secret:
+
 ```bash
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
 
-## 5. Run the App
+## 4. Run the App
 
 ```bash
-# From root directory
+# From Cougars/ root — starts both servers concurrently
 npm run dev
 ```
 
-This starts:
-- Backend on http://localhost:5000
-- Frontend on http://localhost:5173
+- Backend: <http://localhost:5000>
+- Frontend: <http://localhost:5173>
 
-## 6. Test It!
+## 5. Test It
 
-1. Open http://localhost:5173
-2. Register a new account
-3. Create your first character
-4. Upload a profile picture
-
----
-
-## Deploy to Production
-
-See [SETUP.md](./SETUP.md) for detailed deployment instructions.
-
-**Recommended:** Vercel (frontend) + Railway (backend)
-
-### Quick Deploy
-
-1. **Backend to Railway:**
-   - Go to railway.app
-   - Deploy from GitHub
-   - Add environment variables
-
-2. **Frontend to Vercel:**
-   - Go to vercel.com
-   - Import GitHub repo
-   - Set root directory to `client`
-   - Add `VITE_API_URL` environment variable
-
-Done! 🎉
-
----
+1. Open <http://localhost:5173>
+2. Register an account
+3. Go to **Create Profile** and fill in your details
+4. Upload a profile photo
+5. Go home — your card should appear in the team grid and OSI stack
 
 ## Troubleshooting
 
 **Can't connect to MongoDB?**
-- Check your connection string
-- Whitelist your IP in Atlas Network Access
+
+- Check Network Access in Atlas — your IP must be whitelisted
+- Verify the connection string is correct (no stray spaces)
 
 **Images not uploading?**
-- Verify Cloudinary credentials
-- Check browser console for errors
+
+- Double-check Cloudinary credentials in `.env`
+- Check the browser console for error details
 
 **CORS errors?**
-- Make sure `CLIENT_URL` matches your frontend URL
+
+- Make sure `CLIENT_URL=http://localhost:5173` is set in `server/.env`
 
 ---
 
-## Need Help?
-
-See the full [SETUP.md](./SETUP.md) guide for:
-- Detailed deployment instructions
-- GitHub Actions CI/CD setup
-- Custom domain configuration
-- Troubleshooting guide
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for production hosting instructions.

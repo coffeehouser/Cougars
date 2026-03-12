@@ -1,16 +1,29 @@
-# React + Vite
+# Cyber Cougars — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + Vite client for the Cyber Cougars OSI Showcase.
 
-Currently, two official plugins are available:
+## Dev server
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm run dev
+```
 
-## React Compiler
+Runs on <http://localhost:5173>. Requires the backend running on port 5000 (see root `README.md`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build for production
 
-## Expanding the ESLint configuration
+```bash
+npm run build
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Output goes to `dist/`. Deploy the `dist/` folder to Vercel or any static host.
+
+## Environment variable
+
+Create a `client/.env` file:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Change the URL to your deployed backend when building for production.

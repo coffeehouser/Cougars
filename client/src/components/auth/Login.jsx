@@ -31,7 +31,7 @@ const Login = () => {
       <div className="auth-box">
         <div className="auth-header">
           <h1 className="auth-title">Login</h1>
-          <p className="auth-subtitle">Welcome back to the campaign!</p>
+          <p className="auth-subtitle">Welcome back, Cyber Cougar.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">

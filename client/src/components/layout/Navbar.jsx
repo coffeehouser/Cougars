@@ -9,17 +9,17 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          DnD Space
+          Cyber Cougars
         </Link>
 
         <div className="navbar-links">
           {isAuthenticated ? (
             <>
               <Link to="/" className="nav-link">Home</Link>
-              <Link to="/my-characters" className="nav-link">My Characters</Link>
-              <Link to="/character/create" className="nav-link">Create Character</Link>
+              <Link to="/my-profile" className="nav-link">My Profile</Link>
+              <Link to="/profile/create" className="nav-link">Create Profile</Link>
               <div className="nav-user">
-                <span>Welcome, {user?.username}!</span>
+                <span>{user?.username}</span>
                 <button type="button" onClick={logout} className="btn-logout">
                   Logout
                 </button>

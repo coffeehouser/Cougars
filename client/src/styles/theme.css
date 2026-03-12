@@ -1,68 +1,66 @@
 /*
- * Dark D&D Theme - Global Variables & Styles
- * Fantasy-inspired dark theme with medieval aesthetics
+ * Cyber Cougars Theme - Mid-State Technical College
+ * Maroon & Gold — Professional Tech Aesthetic
  */
 
 :root {
-  /* === Color Palette === */
+  /* === Brand Colors — Maroon === */
+  --primary-dark: #3D0808;
+  --primary-medium: #8B1A1A;
+  --primary-light: #B32020;
+  --primary-accent: #CC2929;
 
-  /* Primary Colors - Deep Purple/Mystic */
-  --primary-dark: #1a0f2e;        /* Deep purple-black */
-  --primary-medium: #2d1b4e;      /* Rich purple */
-  --primary-light: #4a2c6b;       /* Lighter purple */
-  --primary-accent: #6b46c1;      /* Bright mystic purple */
+  /* Gold */
+  --gold-dark: #8C6D00;
+  --gold-medium: #C5A028;
+  --gold-light: #E0B93A;
+  --gold-glow: #F0CA50;
 
-  /* Secondary Colors - Gold/Amber */
-  --gold-dark: #8b6914;           /* Dark gold */
-  --gold-medium: #d4af37;         /* Classic gold */
-  --gold-light: #f4d03f;          /* Bright gold */
-  --gold-glow: #ffd700;           /* Golden glow */
-
-  /* Background Colors */
-  --bg-darkest: #0d0a15;          /* Almost black */
-  --bg-dark: #1a1425;             /* Dark purple-black */
-  --bg-medium: #2a1f3d;           /* Medium dark */
-  --bg-light: #3d2f5a;            /* Lighter purple */
-  --bg-card: #251a38;             /* Card background */
-  --bg-hover: #32254a;            /* Hover state */
+  /* Background Colors — dark tech */
+  --bg-darkest: #0A0A10;
+  --bg-dark: #111118;
+  --bg-medium: #1A1A26;
+  --bg-light: #252535;
+  --bg-card: #1E1E2E;
+  --bg-hover: #2A2A3A;
 
   /* Text Colors */
-  --text-primary: #e8dff5;        /* Light purple-white */
-  --text-secondary: #b8a8d4;      /* Muted purple */
-  --text-muted: #8a7a9d;          /* Very muted */
-  --text-disabled: #5a4a6d;       /* Disabled state */
+  --text-primary: #F0EEF8;
+  --text-secondary: #B0AEBF;
+  --text-muted: #7A788A;
+  --text-disabled: #4A4860;
 
-  /* Accent Colors */
-  --red-dark: #7a1a1a;            /* Dark red */
-  --red-medium: #c53030;          /* Medium red */
-  --red-light: #fc8181;           /* Light red */
+  /* Semantic Colors */
+  --red-dark: #7a1a1a;
+  --red-medium: #c53030;
+  --red-light: #fc8181;
 
-  --green-dark: #1a4d2e;          /* Dark green */
-  --green-medium: #2f855a;        /* Medium green */
-  --green-light: #68d391;         /* Light green */
+  --green-dark: #1a4d2e;
+  --green-medium: #2f855a;
+  --green-light: #68d391;
 
-  --blue-dark: #1e3a5f;           /* Dark blue */
-  --blue-medium: #2c5282;         /* Medium blue */
-  --blue-light: #63b3ed;          /* Light blue */
+  --blue-dark: #1e3a5f;
+  --blue-medium: #2c5282;
+  --blue-light: #63b3ed;
 
   /* Border & Divider Colors */
-  --border-dark: #3d2f5a;         /* Dark border */
-  --border-medium: #4a3b6b;       /* Medium border */
-  --border-light: #6b5a8a;        /* Light border */
-  --border-gold: #8b6914;         /* Gold border */
+  --border-dark: #2A2A3A;
+  --border-medium: #3A3A50;
+  --border-light: #5A5A78;
+  --border-gold: #8C6D00;
 
   /* Shadow & Glow */
-  --shadow-sm: 0 2px 8px rgba(13, 10, 21, 0.4);
-  --shadow-md: 0 4px 16px rgba(13, 10, 21, 0.6);
-  --shadow-lg: 0 8px 32px rgba(13, 10, 21, 0.8);
-  --glow-purple: 0 0 20px rgba(107, 70, 193, 0.3);
-  --glow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.8);
+  --glow-maroon: 0 0 20px rgba(139, 26, 26, 0.4);
+  --glow-gold: 0 0 20px rgba(197, 160, 40, 0.35);
 
   /* === Typography === */
-  --font-primary: 'Cinzel', 'Georgia', serif;          /* Headings - medieval */
-  --font-secondary: 'Spectral', 'Times New Roman', serif;  /* Body - elegant */
-  --font-body: 'Lora', 'Georgia', serif;               /* Alternative body */
-  --font-mono: 'Courier New', monospace;               /* Code/stats */
+  --font-primary: 'Orbitron', 'Exo 2', sans-serif;      /* Headings — techy */
+  --font-secondary: 'Inter', 'Roboto', sans-serif;       /* Body — clean */
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
   /* === Spacing === */
   --spacing-xs: 4px;
@@ -95,8 +93,8 @@
 body {
   background: var(--bg-darkest);
   background-image:
-    radial-gradient(ellipse at top, rgba(107, 70, 193, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom, rgba(26, 15, 46, 0.5) 0%, transparent 50%);
+    radial-gradient(ellipse at top left, rgba(139, 26, 26, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(197, 160, 40, 0.06) 0%, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-secondary);
@@ -109,45 +107,44 @@ body {
 
 /* === Typography === */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
   font-weight: 600;
   line-height: 1.3;
   color: var(--text-primary);
-  letter-spacing: 0.5px;
   margin-bottom: var(--spacing-md);
 }
 
 h1 {
   font-size: 2.5rem;
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  background: linear-gradient(135deg, var(--gold-glow), var(--gold-medium));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: var(--glow-gold);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--gold-medium);
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--gold-light);
 }
 
-h4 {
-  font-size: 1.25rem;
-}
-
-h5 {
-  font-size: 1.1rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.05rem; }
+h6 { font-size: 1rem; }
 
 p {
   margin-bottom: var(--spacing-md);
@@ -168,17 +165,16 @@ a:hover {
 /* === Scrollbar Styling === */
 
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
-  border-radius: var(--radius-md);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--primary-accent), var(--primary-medium));
+  background: linear-gradient(180deg, var(--primary-medium), var(--primary-dark));
   border-radius: var(--radius-md);
   border: 2px solid var(--bg-dark);
 }
@@ -190,12 +186,12 @@ a:hover {
 /* === Selection === */
 
 ::selection {
-  background: var(--primary-accent);
+  background: var(--primary-medium);
   color: var(--text-primary);
 }
 
 ::-moz-selection {
-  background: var(--primary-accent);
+  background: var(--primary-medium);
   color: var(--text-primary);
 }
 
@@ -230,11 +226,10 @@ a:hover {
   justify-content: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) var(--spacing-lg);
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
   border: 2px solid transparent;
   border-radius: var(--radius-md);
   cursor: pointer;
@@ -251,8 +246,10 @@ a:hover {
 
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 30px rgba(197, 160, 40, 0.5);
   transform: translateY(-2px);
+  color: var(--bg-darkest);
+  text-decoration: none;
 }
 
 .btn-secondary {
@@ -264,6 +261,8 @@ a:hover {
 .btn-secondary:hover {
   background: var(--bg-light);
   border-color: var(--border-light);
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
 .btn-danger {
@@ -275,6 +274,8 @@ a:hover {
 .btn-danger:hover {
   background: var(--red-light);
   box-shadow: 0 0 20px rgba(252, 129, 129, 0.3);
+  color: var(--bg-darkest);
+  text-decoration: none;
 }
 
 .btn-success {
@@ -286,6 +287,7 @@ a:hover {
 .btn-success:hover {
   background: var(--green-light);
   box-shadow: 0 0 20px rgba(104, 211, 145, 0.3);
+  text-decoration: none;
 }
 
 .btn-small {
@@ -307,8 +309,8 @@ a:hover {
 .form-group label {
   display: block;
   margin-bottom: var(--spacing-sm);
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--gold-medium);
   letter-spacing: 0.5px;
@@ -342,6 +344,11 @@ a:hover {
   min-height: 100px;
 }
 
+.form-group select option {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+}
+
 .form-help {
   display: block;
   margin-top: var(--spacing-xs);
@@ -355,7 +362,7 @@ a:hover {
 .ornament-top,
 .ornament-bottom {
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg,
     transparent,
     var(--gold-medium) 50%,
@@ -365,7 +372,7 @@ a:hover {
 }
 
 .section-divider {
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg,
     transparent,
     var(--border-gold) 20%,
@@ -377,7 +384,7 @@ a:hover {
 }
 
 .section-divider::before {
-  content: '⚔';
+  content: '//';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -385,7 +392,9 @@ a:hover {
   background: var(--bg-card);
   padding: 0 var(--spacing-md);
   color: var(--gold-medium);
-  font-size: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 2px;
 }
 
 /* === Loading Spinner === */
@@ -410,7 +419,7 @@ a:hover {
 .text-right { text-align: right; }
 
 .text-gold { color: var(--gold-medium); }
-.text-purple { color: var(--primary-accent); }
+.text-maroon { color: var(--primary-medium); }
 .text-muted { color: var(--text-muted); }
 
 .mt-sm { margin-top: var(--spacing-sm); }
@@ -432,9 +441,9 @@ a:hover {
     font-size: 14px;
   }
 
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
 
   .card {
     padding: var(--spacing-md);

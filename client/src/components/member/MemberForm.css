@@ -1,0 +1,133 @@
+.member-form-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.member-form-card {
+  /* inherits .card styles from theme.css */
+}
+
+.member-form-error {
+  background: rgba(197, 48, 48, 0.15);
+  border: 1px solid var(--red-medium);
+  border-radius: var(--radius-md);
+  color: var(--red-light);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.9rem;
+}
+
+.member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Two-column row */
+.member-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 560px) {
+  .member-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dropzone */
+.member-form__dropzone {
+  border: 2px dashed var(--border-medium);
+  border-radius: var(--radius-lg);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.member-form__dropzone:hover {
+  border-color: var(--gold-medium);
+  background: var(--bg-hover);
+}
+
+.member-form__dropzone-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.member-form__dropzone-icon {
+  font-size: 2rem;
+}
+
+.member-form__preview {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* OSI checkboxes */
+.member-form__osi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.member-form__osi-check {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.member-form__osi-check:hover {
+  border-color: var(--gold-dark);
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.member-form__osi-check input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--gold-medium);
+}
+
+.member-form__osi-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 22px;
+  background: var(--primary-medium);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+/* Actions */
+.member-form__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--border-dark);
+}

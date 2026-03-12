@@ -61,15 +61,11 @@ const authLimiter = rateLimit({
 
 // Routes
 app.use('/api/auth', authLimiter, require('./routes/auth'));
-app.use('/api/characters', require('./routes/characters'));
-app.use('/api/comments', require('./routes/comments'));
-app.use('/api/albums', require('./routes/albums'));
-app.use('/api/photos', require('./routes/photos'));
-app.use('/api/playlists', require('./routes/playlists'));
+app.use('/api/members', require('./routes/members'));
 
 // Health check
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'DnD Space API is running' });
+  res.json({ status: 'ok', message: 'Cyber Cougars API is running' });
 });
 
 // 404 handler

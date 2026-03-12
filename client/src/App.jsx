@@ -7,11 +7,10 @@ import PrivateRoute from './components/auth/PrivateRoute';
 import Home from './components/common/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import CreateCharacter from './components/character/CreateCharacter';
-import EditCharacter from './components/character/EditCharacter';
-import CharacterProfile from './components/character/CharacterProfile';
-import MyCharacters from './components/character/MyCharacters';
-import AlbumView from './pages/AlbumView';
+import MemberProfile from './components/member/MemberProfile';
+import MyProfile from './pages/MyProfile';
+import CreateProfile from './pages/CreateProfile';
+import EditProfile from './pages/EditProfile';
 import './App.css';
 
 function App() {
@@ -26,32 +25,31 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
 
-              {/* Public character routes */}
-              <Route path="/character/:id" element={<CharacterProfile />} />
-              <Route path="/album/:id" element={<AlbumView />} />
+              {/* Public member profile */}
+              <Route path="/member/:id" element={<MemberProfile />} />
 
               {/* Protected routes */}
               <Route
-                path="/my-characters"
+                path="/my-profile"
                 element={
                   <PrivateRoute>
-                    <MyCharacters />
+                    <MyProfile />
                   </PrivateRoute>
                 }
               />
               <Route
-                path="/character/create"
+                path="/profile/create"
                 element={
                   <PrivateRoute>
-                    <CreateCharacter />
+                    <CreateProfile />
                   </PrivateRoute>
                 }
               />
               <Route
-                path="/character/:id/edit"
+                path="/profile/edit"
                 element={
                   <PrivateRoute>
-                    <EditCharacter />
+                    <EditProfile />
                   </PrivateRoute>
                 }
               />

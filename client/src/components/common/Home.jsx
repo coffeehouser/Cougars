@@ -1,76 +1,73 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import CharacterList from '../character/CharacterList';
-import DiceRoller from './DiceRoller';
+import memberService from '../../services/memberService';
+import OSIStack from '../home/OSIStack';
+import MemberGrid from '../member/MemberGrid';
 import './Home.css';
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth();
+  const [members, setMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    memberService.getAllMembers()
+      .then(data => setMembers(data.members || []))
+      .catch(() => setMembers([]))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div className="home-container">
-      <div className="hero">
-        <h1>Welcome to DnD Space</h1>
-        <p className="hero-subtitle">
-          The MySpace-style social network for Dr_Maddz's D&D Campaign
+
+      {/* ── Hero ── */}
+      <section className="home-hero">
+        <div className="home-hero__eyebrow">Mid-State Technical College · IT Club</div>
+        <h1 className="home-hero__title">Cyber Cougars<br />OSI Showcase</h1>
+        <p className="home-hero__subtitle">
+          Demonstrating all seven layers of the OSI model through hands-on networking,
+          security, and web technology — live at the industry event on March&nbsp;17,&nbsp;2026.
         </p>
 
         {isAuthenticated ? (
-          <div className="hero-content">
-            <h2>Welcome back, {user?.username}!</h2>
-            <p>Ready to continue your adventure?</p>
-            <div className="home-actions">
-              <a href="/my-characters" className="btn-primary">
-                View My Characters
-              </a>
-              <a href="/character/create" className="btn-secondary">
-                Create New Character
-              </a>
-            </div>
+          <div className="home-hero__actions">
+            <Link to="/my-profile" className="btn btn-primary">My Profile</Link>
+            <Link to="/profile/create" className="btn btn-secondary">Create Profile</Link>
           </div>
         ) : (
-          <div className="hero-content">
-            <p>Create your character profile, share your adventure photos, and connect with fellow adventurers!</p>
-            <div className="home-actions">
-              <a href="/register" className="btn-primary">
-                Join the Campaign
-              </a>
-              <a href="/login" className="btn-secondary">
-                Login
-              </a>
-            </div>
+          <div className="home-hero__actions">
+            <Link to="/register" className="btn btn-primary">Join the Team</Link>
+            <Link to="/login" className="btn btn-secondary">Login</Link>
           </div>
         )}
-      </div>
+      </section>
 
-      {/* Dice Roller */}
-      <DiceRoller />
-
-      <div className="features">
-        <h2>Features</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <h3>Character Profiles</h3>
-            <p>Create detailed profiles with D&D stats, bios, and profile pictures</p>
-          </div>
-          <div className="feature-card">
-            <h3>Wall Comments</h3>
-            <p>MySpace-style public commenting on character profiles</p>
-          </div>
-          <div className="feature-card">
-            <h3>Photo Albums</h3>
-            <p>Share campaign moments and character art in galleries</p>
-          </div>
-          <div className="feature-card">
-            <h3>Music Playlists</h3>
-            <p>Add character theme songs with Spotify & SoundCloud embeds</p>
-          </div>
+      {/* ── OSI Stack ── */}
+      <section className="home-section">
+        <div className="home-section__header">
+          <h2>OSI Layer Coverage</h2>
+          <p>Each team member owns one or more layers of the OSI model. Click a name to see their profile.</p>
         </div>
-      </div>
+        <OSIStack members={members} />
+      </section>
 
-      {/* Campaign Directory */}
-      <div style={{ marginTop: '40px' }}>
-        <CharacterList showOnlyMine={false} />
-      </div>
+      {/* ── Team ── */}
+      <section className="home-section">
+        <div className="home-section__header">
+          <h2>Meet the Team</h2>
+          <p>Click any card to view a full member profile.</p>
+        </div>
+        {loading ? (
+          <div className="home-loading">
+            <div className="spinner" />
+            <p>Loading team...</p>
+          </div>
+        ) : (
+          <MemberGrid members={members} />
+        )}
+      </section>
+
     </div>
   );
 };

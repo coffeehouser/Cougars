@@ -50,7 +50,7 @@ const Register = () => {
       <div className="auth-box">
         <div className="auth-header">
           <h1 className="auth-title">Register</h1>
-          <p className="auth-subtitle">Create your account and join the adventure!</p>
+          <p className="auth-subtitle">Create your account to join the Cyber Cougars showcase.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">

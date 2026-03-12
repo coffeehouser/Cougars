@@ -1,12 +1,12 @@
 /*
- * Dark D&D Navbar
- * Medieval fantasy navigation with gold accents
+ * Cyber Cougars Navbar
+ * Maroon & Gold — professional tech navigation
  */
 
 .navbar {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
-  border-bottom: 3px solid var(--border-gold);
-  box-shadow: var(--shadow-lg), 0 4px 20px rgba(212, 175, 55, 0.2);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #1A0505 100%);
+  border-bottom: 2px solid var(--border-gold);
+  box-shadow: var(--shadow-lg);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -14,7 +14,7 @@
 }
 
 .navbar-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -24,74 +24,47 @@
 
 .navbar-brand {
   font-family: var(--font-primary);
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  background: linear-gradient(135deg, var(--gold-glow), var(--gold-medium));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px var(--gold-glow);
-  transition: all var(--transition-fast);
+  transition: opacity var(--transition-fast);
   text-decoration: none;
-  position: relative;
-}
-
-.navbar-brand::before {
-  content: '⚔️';
-  position: absolute;
-  left: -30px;
-  font-size: 1.5rem;
-  filter: drop-shadow(0 0 10px var(--gold-glow));
 }
 
 .navbar-brand:hover {
-  transform: scale(1.05);
-  text-shadow: 0 0 40px var(--gold-glow);
+  opacity: 0.85;
+  text-decoration: none;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .nav-link {
-  font-family: var(--font-primary);
-  font-size: 0.95rem;
+  font-family: var(--font-secondary);
+  font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 2px solid transparent;
+  letter-spacing: 0.3px;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid transparent;
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
-  position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-medium), transparent);
-  transition: transform var(--transition-fast);
 }
 
 .nav-link:hover {
   color: var(--gold-light);
   border-color: var(--border-gold);
-  background: rgba(212, 175, 55, 0.1);
-}
-
-.nav-link:hover::after {
-  transform: translateX(-50%) scaleX(1);
+  background: rgba(197, 160, 40, 0.08);
+  text-decoration: none;
 }
 
 .nav-user {
@@ -99,58 +72,40 @@
   align-items: center;
   gap: var(--spacing-md);
   padding-left: var(--spacing-md);
-  border-left: 2px solid var(--border-dark);
+  border-left: 1px solid var(--border-dark);
 }
 
 .nav-user span {
-  font-family: var(--font-secondary);
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-style: italic;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 
 .btn-logout {
-  font-family: var(--font-primary);
-  font-size: 0.85rem;
+  font-family: var(--font-secondary);
+  font-size: 0.82rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   padding: var(--spacing-xs) var(--spacing-md);
-  background: linear-gradient(135deg, var(--red-medium), var(--red-dark));
-  color: var(--text-primary);
-  border: 2px solid var(--red-dark);
+  background: transparent;
+  color: var(--red-light);
+  border: 1px solid var(--red-dark);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
-  box-shadow: 0 0 15px rgba(197, 48, 48, 0.3);
 }
 
 .btn-logout:hover {
-  background: linear-gradient(135deg, var(--red-light), var(--red-medium));
-  border-color: var(--red-light);
-  box-shadow: 0 0 25px rgba(252, 129, 129, 0.4);
-  transform: translateY(-2px);
+  background: var(--red-dark);
+  color: var(--text-primary);
+  border-color: var(--red-medium);
 }
 
-.btn-logout:active {
-  transform: translateY(0);
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-md);
-  }
-
-  .navbar-brand {
-    font-size: 1.5rem;
-  }
-
-  .navbar-brand::before {
-    left: -25px;
-    font-size: 1.2rem;
   }
 
   .navbar-links {
@@ -160,35 +115,14 @@
   }
 
   .nav-link {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     padding: var(--spacing-xs) var(--spacing-sm);
   }
 
   .nav-user {
-    flex-direction: column;
-    gap: var(--spacing-xs);
     padding-left: 0;
     border-left: none;
-    border-top: 2px solid var(--border-dark);
+    border-top: 1px solid var(--border-dark);
     padding-top: var(--spacing-sm);
-  }
-
-  .nav-user span {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar-brand::before {
-    display: none;
-  }
-
-  .navbar-links {
-    width: 100%;
-  }
-
-  .nav-link {
-    flex: 1 1 auto;
-    text-align: center;
   }
 }
