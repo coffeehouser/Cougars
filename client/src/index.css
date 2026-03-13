@@ -57,8 +57,8 @@
 
 /* Error States */
 .error-container {
-  background: var(--red-dark);
-  border: 2px solid var(--red-medium);
+  background: var(--error-bg);
+  border: 2px solid var(--error-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   margin: var(--spacing-lg);
@@ -66,7 +66,7 @@
 }
 
 .error-message {
-  color: var(--red-light);
+  color: var(--error-text);
   font-weight: 600;
 }
 
