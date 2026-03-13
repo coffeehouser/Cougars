@@ -33,13 +33,18 @@ function MemberProfile() {
   }, [id]);
 
   useEffect(() => {
-    if (!member?.profileSlug) return;
+    if (!member) return;
+    const firstName = member.name?.split(' ')[0].toLowerCase();
+    const slug = member.profileSlug;
+    if (!firstName && !slug) return;
     fetch('/images/gallery/manifest.json')
       .then(r => r.json())
       .then(data => {
-        const matched = (data.photos || []).filter(
-          p => Array.isArray(p.tags) && p.tags.includes(member.profileSlug)
-        );
+        const matched = (data.photos || []).filter(p => {
+          if (!Array.isArray(p.tags)) return false;
+          return (firstName && p.tags.includes(firstName)) ||
+                 (slug && p.tags.includes(slug));
+        });
         setTaggedPhotos(matched);
       })
       .catch(() => {});

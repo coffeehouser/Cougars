@@ -1,5 +1,9 @@
 const Member = require('../models/Member');
 
+function generateSlug(name) {
+  return name.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+
 // @desc    Get all members
 // @route   GET /api/members
 // @access  Public
@@ -78,6 +82,11 @@ exports.createMember = async (req, res, next) => {
       ...req.body,
       owner: req.user._id
     };
+
+    // Auto-generate profileSlug from name
+    if (memberData.name && !memberData.profileSlug) {
+      memberData.profileSlug = generateSlug(memberData.name);
+    }
 
     // Ensure osiLayers is an array of numbers
     if (memberData.osiLayers && !Array.isArray(memberData.osiLayers)) {
