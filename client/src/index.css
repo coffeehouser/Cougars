@@ -1,9 +1,5 @@
-/* Import Dark D&D Theme */
+/* Cyber Cougars Theme */
 @import './styles/theme.css';
-@import './styles/decorative.css';
-
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 
 /* Reset & Base Styles (theme.css handles most of this) */
 
