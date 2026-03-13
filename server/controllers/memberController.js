@@ -114,7 +114,7 @@ exports.updateMember = async (req, res, next) => {
 
     const allowedUpdates = [
       'name', 'major', 'semester', 'role',
-      'osiLayers', 'osiDescription', 'bio', 'linkedinUrl', 'profileImage'
+      'osiLayers', 'osiDescription', 'bio', 'linkedinUrl', 'githubUrl', 'profileImage'
     ];
 
     allowedUpdates.forEach(field => {

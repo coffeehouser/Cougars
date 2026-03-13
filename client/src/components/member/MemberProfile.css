@@ -142,8 +142,14 @@
   color: var(--text-muted);
 }
 
-/* LinkedIn button */
-.member-profile__linkedin-btn {
+/* Link buttons (LinkedIn, GitHub) */
+.member-profile__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.member-profile__link-btn {
   width: 100%;
   text-align: center;
 }

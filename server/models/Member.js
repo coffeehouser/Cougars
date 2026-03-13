@@ -65,6 +65,11 @@ const MemberSchema = new mongoose.Schema({
     trim: true,
     default: ''
   },
+  githubUrl: {
+    type: String,
+    trim: true,
+    default: ''
+  },
   profileImage: {
     type: String,
     default: '/images/headshots/default.jpg'

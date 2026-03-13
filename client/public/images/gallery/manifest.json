@@ -1,46 +1,46 @@
 {
-  "title": "Behind the Build",
-  "subtitle": "The Cyber Cougars team putting in the work.",
-  "photos": [
-    {
-      "file": "tmp_aaa8178b-b999-4fe0-ae26-2a7bb4f5167e.jpeg",
-      "caption": "Full team locked in — build session"
-    },
-    {
-      "file": "tmp_3d8cc5f0-1329-401f-92ca-d2be10d93b16.jpeg",
-      "caption": "Terminating cables — Physical layer in action"
-    },
-    {
-      "file": "20260225_200303.jpg",
-      "caption": "Representing at the lab — February 25"
-    },
-    {
-      "file": "20260225_200309.jpg",
-      "caption": "Hyped for the IT Reverse Job Fair — February 25"
-    },
-    {
-      "file": "20260225_200256.jpg",
-      "caption": "Getting it done — February 25"
-    },
-    {
-      "file": "20260227_001346.jpg",
-      "caption": "Late-night grind — February 27"
-    },
-    {
-      "file": "20260311_193124.jpg",
-      "caption": "Deep in the networking stack — March 11"
-    },
-    {
-      "file": "20260311_193138.jpg",
-      "caption": "Side by side at the laptops — March 11"
-    },
-    {
-      "file": "20260311_193147.jpg",
-      "caption": "Talking through the config — March 11"
-    },
-    {
-      "file": "20260225_200322.jpg",
-      "caption": "February 25"
-    }
-  ]
+	"title": "Behind the Build",
+	"subtitle": "The Cyber Cougars team putting in the work.",
+	"photos": [
+		{
+			"file": "tmp_aaa8178b-b999-4fe0-ae26-2a7bb4f5167e.jpeg",
+			"caption": "Full team locked in — build session"
+		},
+		{
+			"file": "tmp_3d8cc5f0-1329-401f-92ca-d2be10d93b16.jpeg",
+			"caption": "Terminating cables — Physical layer in action"
+		},
+		{
+			"file": "20260225_200303.jpg",
+			"caption": "Representing at the lab — February 25"
+		},
+		{
+			"file": "20260225_200309.jpg",
+			"caption": "Hyped for the IT Reverse Job Fair — February 25"
+		},
+		{
+			"file": "20260225_200256.jpg",
+			"caption": "Getting it done — February 25"
+		},
+		{
+			"file": "20260227_001346.jpg",
+			"caption": "Late-night grind — February 27"
+		},
+		{
+			"file": "20260311_193124.jpg",
+			"caption": "Deep in the networking stack — March 11"
+		},
+		{
+			"file": "20260311_193138.jpg",
+			"caption": "Side by side at the laptops — March 11"
+		},
+		{
+			"file": "20260311_193147.jpg",
+			"caption": "Talking through the config — March 11"
+		},
+		{
+			"file": "20260225_200322.jpg",
+			"caption": "Troy - February 25"
+		}
+	]
 }

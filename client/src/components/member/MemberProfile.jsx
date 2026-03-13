@@ -116,15 +116,29 @@ function MemberProfile() {
             </div>
           </div>
 
-          {member.linkedinUrl && (
-            <a
-              href={member.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary member-profile__linkedin-btn"
-            >
-              View LinkedIn
-            </a>
+          {(member.linkedinUrl || member.githubUrl) && (
+            <div className="member-profile__links">
+              {member.linkedinUrl && (
+                <a
+                  href={member.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary member-profile__link-btn"
+                >
+                  LinkedIn
+                </a>
+              )}
+              {member.githubUrl && (
+                <a
+                  href={member.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary member-profile__link-btn"
+                >
+                  GitHub
+                </a>
+              )}
+            </div>
           )}
 
           {isOwner && (

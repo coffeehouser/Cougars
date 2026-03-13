@@ -38,6 +38,7 @@ const EMPTY_FORM = {
   osiDescription: '',
   bio: '',
   linkedinUrl: '',
+  githubUrl: '',
   profileImage: '',
 };
 
@@ -60,6 +61,7 @@ function MemberForm({ mode = 'create', existingMember = null }) {
         osiDescription: existingMember.osiDescription || '',
         bio: existingMember.bio || '',
         linkedinUrl: existingMember.linkedinUrl || '',
+        githubUrl: existingMember.githubUrl || '',
         profileImage: existingMember.profileImage || '',
       });
     }
@@ -210,17 +212,30 @@ function MemberForm({ mode = 'create', existingMember = null }) {
             </div>
           </div>
 
-          {/* LinkedIn */}
-          <div className="form-group">
-            <label htmlFor="linkedinUrl">LinkedIn URL</label>
-            <input
-              id="linkedinUrl"
-              name="linkedinUrl"
-              type="url"
-              value={formData.linkedinUrl}
-              onChange={handleChange}
-              placeholder="https://linkedin.com/in/yourname"
-            />
+          {/* LinkedIn + GitHub row */}
+          <div className="member-form__row">
+            <div className="form-group">
+              <label htmlFor="linkedinUrl">LinkedIn URL</label>
+              <input
+                id="linkedinUrl"
+                name="linkedinUrl"
+                type="url"
+                value={formData.linkedinUrl}
+                onChange={handleChange}
+                placeholder="https://linkedin.com/in/yourname"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="githubUrl">GitHub URL</label>
+              <input
+                id="githubUrl"
+                name="githubUrl"
+                type="url"
+                value={formData.githubUrl}
+                onChange={handleChange}
+                placeholder="https://github.com/yourusername"
+              />
+            </div>
           </div>
 
           {/* OSI Layers */}
