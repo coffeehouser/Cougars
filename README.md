@@ -4,7 +4,7 @@
 
 A full-stack web application built to showcase the club's hands-on demonstration of all seven layers of the OSI networking model at the industry event on **March 17, 2026**.
 
-Each team member owns one or more OSI layers and presents their work at their own station. This site serves as a central hub — displaying the team, each member's role, and what they're demonstrating.
+Each team member owns one or more OSI layers and contributed to a hands-on build the club assembled together. This app runs on two computers the club built, and serves as the interactive showcase — visitors browse through member profiles to see how each person's work maps to a layer of the OSI model.
 
 ---
 
@@ -30,7 +30,7 @@ Project Managers: Troy & Evan — Assistant PM: Oneil
 
 - React 19 + Vite
 - React Router 7
-- Custom CSS — Maroon & Gold theme (MSTC brand colors, WCAG AA contrast)
+- Custom CSS — official MSTC brand colors (`#82142D` maroon, `#fcb618` gold, `#005589` blue)
 - Google Fonts: Orbitron (headings), Inter (body), JetBrains Mono (code)
 
 ### Backend
@@ -50,7 +50,6 @@ Project Managers: Troy & Evan — Assistant PM: Oneil
 - **Team Grid** — responsive card grid on the home page
 - **Auth System** — login / register retained for the cybersecurity hacking demonstration
 - **Profile Photos** — static files in `client/public/images/headshots/`; no cloud upload required
-- **Accessible colors** — WCAG AA contrast throughout; amber error messages (not red)
 - **Responsive Design** — works on desktop, tablet, and mobile
 
 ---
@@ -126,7 +125,7 @@ Recommended: **800×800 px**, square crop, JPG or WebP.
 In the profile form, enter the path in the **Profile Photo Path** field:
 `/images/headshots/darien.jpg`
 
-Event / gathering photos go in `client/public/images/gallery/`.
+Event / gathering photos go in `client/public/images/gallery/`. After dropping files there, open `client/public/images/gallery/manifest.json` and add each filename to the `photos` array — the gallery on the home page updates automatically with no code changes needed. See `gallery/README.txt` for the exact format.
 
 ---
 
@@ -204,7 +203,6 @@ Cougars/
 - [ ] Edit Profile → changes save correctly, redirects back to profile view
 - [ ] Delete Profile → removed from DB, redirected to home
 - [ ] Protected routes (`/my-profile`, `/profile/create`, `/profile/edit`) redirect to login when unauthenticated
-- [ ] No purple / DnD colors visible — maroon and gold throughout
 - [ ] All 7 OSI layers render in the stack
 - [ ] Mobile responsive — grid stacks to 1 column on small screens
 

@@ -33,6 +33,7 @@ function MemberGrid({ members = [] }) {
               src={member.profileImage || '/default-profile.png'}
               alt={member.name}
               className="member-card__photo"
+              loading="lazy"
               onError={e => { e.target.src = '/default-profile.png'; }}
             />
           </div>

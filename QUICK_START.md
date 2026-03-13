@@ -101,7 +101,7 @@ client/public/images/headshots/
   jeremy.jpg
 ```
 
-Drop event/gathering photos in `client/public/images/gallery/`.
+Drop event/gathering photos in `client/public/images/gallery/`, then open `client/public/images/gallery/manifest.json` and add each filename to the `photos` array. See `README.txt` in that folder for the exact format.
 
 ## 5. Run the App
 

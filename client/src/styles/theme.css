@@ -4,17 +4,29 @@
  */
 
 :root {
-  /* === Brand Colors — Maroon === */
-  --primary-dark: #3D0808;
-  --primary-medium: #8B1A1A;
-  --primary-light: #B32020;
-  --primary-accent: #CC2929;
+  /* === Official MSTC Brand Colors === */
+  /* Source: Mid-State Technical College brand palette */
+  --mstc-maroon: #82142D;
+  --mstc-gold: #fcb618;
+  --mstc-blue: #005589;
+  --mstc-gray: #404040;
 
-  /* Gold */
-  --gold-dark: #8C6D00;
-  --gold-medium: #C5A028;
-  --gold-light: #E0B93A;
-  --gold-glow: #F0CA50;
+  /* Maroon scale derived from #82142D */
+  --primary-dark: #4D0C1A;
+  --primary-medium: #82142D;
+  --primary-light: #A81D38;
+  --primary-accent: #C2234A;
+
+  /* Gold scale derived from #fcb618 */
+  --gold-dark: #C08A00;
+  --gold-medium: #fcb618;
+  --gold-light: #FFD060;
+  --gold-glow: #FFE090;
+
+  /* Blue scale derived from #005589 */
+  --blue-dark: #003D6B;
+  --blue-medium: #005589;
+  --blue-light: #3399CC;
 
   /* Background Colors — dark tech */
   --bg-darkest: #0A0A10;
@@ -43,22 +55,18 @@
   --green-medium: #2f855a;
   --green-light: #68d391;
 
-  --blue-dark: #1e3a5f;
-  --blue-medium: #2c5282;
-  --blue-light: #63b3ed;
-
   /* Border & Divider Colors */
   --border-dark: #2A2A3A;
   --border-medium: #3A3A50;
   --border-light: #5A5A78;
-  --border-gold: #8C6D00;
+  --border-gold: #C08A00;
 
   /* Shadow & Glow */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.8);
-  --glow-maroon: 0 0 20px rgba(139, 26, 26, 0.4);
-  --glow-gold: 0 0 20px rgba(197, 160, 40, 0.35);
+  --glow-maroon: 0 0 20px rgba(130, 20, 45, 0.4);
+  --glow-gold: 0 0 20px rgba(252, 182, 24, 0.35);
 
   /* === Typography === */
   --font-primary: 'Orbitron', 'Exo 2', sans-serif;      /* Headings — techy */
@@ -97,8 +105,8 @@
 body {
   background: var(--bg-darkest);
   background-image:
-    radial-gradient(ellipse at top left, rgba(139, 26, 26, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse at bottom right, rgba(197, 160, 40, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse at top left, rgba(130, 20, 45, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(252, 182, 24, 0.06) 0%, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-secondary);
@@ -250,7 +258,7 @@ a:hover {
 
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
-  box-shadow: 0 0 30px rgba(197, 160, 40, 0.5);
+  box-shadow: 0 0 30px rgba(252, 182, 24, 0.5);
   transform: translateY(-2px);
   color: var(--bg-darkest);
   text-decoration: none;

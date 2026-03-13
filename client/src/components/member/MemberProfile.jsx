@@ -23,6 +23,7 @@ function MemberProfile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [deleting, setDeleting] = useState(false);
+  const [taggedPhotos, setTaggedPhotos] = useState([]);
 
   useEffect(() => {
     memberService.getMemberById(id)
@@ -30,6 +31,19 @@ function MemberProfile() {
       .catch(() => setError('Member not found.'))
       .finally(() => setLoading(false));
   }, [id]);
+
+  useEffect(() => {
+    if (!member?.profileSlug) return;
+    fetch('/images/gallery/manifest.json')
+      .then(r => r.json())
+      .then(data => {
+        const matched = (data.photos || []).filter(
+          p => Array.isArray(p.tags) && p.tags.includes(member.profileSlug)
+        );
+        setTaggedPhotos(matched);
+      })
+      .catch(() => {});
+  }, [member]);
 
   // auth controller returns user.id (not user._id); member.owner is populated so has ._id
   const isOwner = user && member && member.owner &&
@@ -187,6 +201,32 @@ function MemberProfile() {
           {!member.bio && !member.osiDescription && (
             <section className="member-profile__section">
               <p className="text-muted">This member hasn't added a bio yet.</p>
+            </section>
+          )}
+
+          {taggedPhotos.length > 0 && (
+            <section className="member-profile__section">
+              <h3 className="member-profile__section-title">Photos</h3>
+              <div className="member-profile__tagged-photos">
+                {taggedPhotos.map(photo => (
+                  <a
+                    key={photo.file}
+                    href={`/images/gallery/${photo.file}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-profile__tagged-photo"
+                  >
+                    <img
+                      src={`/images/gallery/${photo.file}`}
+                      alt={photo.caption || ''}
+                      loading="lazy"
+                    />
+                    {photo.caption && (
+                      <span className="member-profile__tagged-caption">{photo.caption}</span>
+                    )}
+                  </a>
+                ))}
+              </div>
             </section>
           )}
 
