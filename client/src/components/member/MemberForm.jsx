@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import memberService from '../../services/memberService';
 import './MemberForm.css';
@@ -38,15 +38,13 @@ const EMPTY_FORM = {
   osiDescription: '',
   bio: '',
   linkedinUrl: '',
+  profileImage: '',
 };
 
 function MemberForm({ mode = 'create', existingMember = null }) {
   const navigate = useNavigate();
-  const fileInputRef = useRef(null);
 
   const [formData, setFormData] = useState(EMPTY_FORM);
-  const [imageFile, setImageFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -62,10 +60,8 @@ function MemberForm({ mode = 'create', existingMember = null }) {
         osiDescription: existingMember.osiDescription || '',
         bio: existingMember.bio || '',
         linkedinUrl: existingMember.linkedinUrl || '',
+        profileImage: existingMember.profileImage || '',
       });
-      if (existingMember.profileImage) {
-        setImagePreview(existingMember.profileImage);
-      }
     }
   }, [mode, existingMember]);
 
@@ -82,21 +78,6 @@ function MemberForm({ mode = 'create', existingMember = null }) {
         : [...current, layerNum];
       return { ...prev, osiLayers: updated };
     });
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setImageFile(file);
-    setImagePreview(URL.createObjectURL(file));
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (!file || !file.type.startsWith('image/')) return;
-    setImageFile(file);
-    setImagePreview(URL.createObjectURL(file));
   };
 
   const validate = () => {
@@ -132,11 +113,6 @@ function MemberForm({ mode = 'create', existingMember = null }) {
         member = res.member;
       }
 
-      // Upload image if one was selected
-      if (imageFile && member?._id) {
-        await memberService.uploadImage(member._id, imageFile);
-      }
-
       navigate(`/member/${member._id}`);
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong. Please try again.');
@@ -163,30 +139,27 @@ function MemberForm({ mode = 'create', existingMember = null }) {
 
           {/* Profile Image */}
           <div className="form-group">
-            <label>Profile Photo</label>
-            <div
-              className="member-form__dropzone"
-              onDrop={handleDrop}
-              onDragOver={e => e.preventDefault()}
-              onClick={() => fileInputRef.current?.click()}
-            >
-              {imagePreview ? (
-                <img src={imagePreview} alt="Preview" className="member-form__preview" />
-              ) : (
-                <div className="member-form__dropzone-placeholder">
-                  <span className="member-form__dropzone-icon">📷</span>
-                  <span>Click or drag a photo here</span>
-                  <span className="form-help">JPG, PNG, or WebP · max 5MB</span>
-                </div>
-              )}
-            </div>
+            <label htmlFor="profileImage">Profile Photo Path</label>
             <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: 'none' }}
+              id="profileImage"
+              name="profileImage"
+              type="text"
+              value={formData.profileImage}
+              onChange={handleChange}
+              placeholder="/images/headshots/yourname.jpg"
             />
+            <span className="form-help">
+              Place your headshot in <code>client/public/images/headshots/</code> and enter the path above.
+              Leave blank to use the default photo.
+            </span>
+            {formData.profileImage && (
+              <img
+                src={formData.profileImage}
+                alt="Preview"
+                className="member-form__preview"
+                style={{ marginTop: '8px', borderRadius: '8px', maxHeight: '160px', objectFit: 'cover' }}
+              />
+            )}
           </div>
 
           {/* Name + Role row */}

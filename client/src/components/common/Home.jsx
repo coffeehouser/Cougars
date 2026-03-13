@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import memberService from '../../services/memberService';
 import OSIStack from '../home/OSIStack';
 import MemberGrid from '../member/MemberGrid';
+import PhotoGallery from '../home/PhotoGallery';
 import './Home.css';
 
 const Home = () => {
@@ -66,6 +67,15 @@ const Home = () => {
         ) : (
           <MemberGrid members={members} />
         )}
+      </section>
+
+      {/* ── Gallery ── */}
+      <section className="home-section">
+        <div className="home-section__header">
+          <h2>Behind the Build</h2>
+          <p>The Cyber Cougars putting in the work.</p>
+        </div>
+        <PhotoGallery />
       </section>
 
     </div>

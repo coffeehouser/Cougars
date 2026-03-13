@@ -9,10 +9,10 @@
 }
 
 .member-form-error {
-  background: rgba(197, 48, 48, 0.15);
-  border: 1px solid var(--red-medium);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
   border-radius: var(--radius-md);
-  color: var(--red-light);
+  color: var(--error-text);
   padding: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
   font-size: 0.9rem;
@@ -37,43 +37,13 @@
   }
 }
 
-/* Dropzone */
-.member-form__dropzone {
-  border: 2px dashed var(--border-medium);
-  border-radius: var(--radius-lg);
-  min-height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
-  overflow: hidden;
-  background: var(--bg-dark);
-}
-
-.member-form__dropzone:hover {
-  border-color: var(--gold-medium);
-  background: var(--bg-hover);
-}
-
-.member-form__dropzone-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  pointer-events: none;
-}
-
-.member-form__dropzone-icon {
-  font-size: 2rem;
-}
-
+/* Image preview */
 .member-form__preview {
   width: 100%;
-  height: 200px;
+  max-height: 200px;
   object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-medium);
 }
 
 /* OSI checkboxes */

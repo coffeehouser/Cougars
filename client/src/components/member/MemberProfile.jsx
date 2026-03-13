@@ -31,8 +31,9 @@ function MemberProfile() {
       .finally(() => setLoading(false));
   }, [id]);
 
+  // auth controller returns user.id (not user._id); member.owner is populated so has ._id
   const isOwner = user && member && member.owner &&
-    (member.owner._id === user._id || member.owner === user._id);
+    (member.owner._id === user.id || member.owner === user.id);
 
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete your profile? This cannot be undone.')) return;
@@ -78,10 +79,10 @@ function MemberProfile() {
 
           <div className="member-profile__photo-wrap">
             <img
-              src={member.profileImage || '/default-profile.png'}
+              src={member.profileImage || '/images/headshots/default.jpg'}
               alt={member.name}
               className="member-profile__photo"
-              onError={e => { e.target.src = '/default-profile.png'; }}
+              onError={e => { e.target.src = '/images/headshots/default.jpg'; }}
             />
           </div>
 

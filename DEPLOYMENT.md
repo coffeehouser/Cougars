@@ -5,8 +5,9 @@ How to deploy the Cyber Cougars OSI Showcase to production.
 ## Prerequisites
 
 - MongoDB Atlas account (free tier works)
-- Cloudinary account (free tier works)
 - GitHub repository with the project pushed
+
+> No Cloudinary or file upload service needed — profile photos are static files bundled with the frontend build.
 
 ---
 
@@ -17,13 +18,8 @@ How to deploy the Cyber Cougars OSI Showcase to production.
 1. Go to <https://cloud.mongodb.com> and create a free cluster
 2. Click **Connect** → **Drivers** → copy the connection string
 3. Replace `<password>` with your DB user's password
-4. Append `/cyber-cougars` before the `?retryWrites` in the string
+4. Append `/cyber-cougars` before the `?retryWrites` part
 5. In **Network Access**, add `0.0.0.0/0` to allow connections from your host
-
-### Cloudinary
-
-1. Go to <https://cloudinary.com/console>
-2. Copy **Cloud Name**, **API Key**, and **API Secret**
 
 ### JWT Secret
 
@@ -33,21 +29,38 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 
 ---
 
-## Part 2: Deploy the Backend (Railway — Recommended)
+## Part 2: Add Images Before Deploying
+
+Before running your production build, make sure headshots are in place:
+
+```text
+client/public/images/headshots/
+  default.jpg
+  darien.jpg
+  josh.jpg
+  jazmine.jpg
+  cody.jpg
+  richard.jpg
+  mason.jpg
+  jeremy.jpg
+```
+
+These get included in the `dist/` bundle automatically during `npm run build`.
+
+---
+
+## Part 3: Deploy the Backend (Railway — Recommended)
 
 1. Go to <https://railway.app> and sign up with GitHub
 2. Click **New Project** → **Deploy from GitHub repo** → select this repo
 3. Under **Settings** → **Root Directory**, set to `server`
-4. Under **Variables**, add all backend environment variables:
+4. Under **Variables**, add:
 
    ```env
    NODE_ENV=production
    PORT=5000
    MONGODB_URI=your-atlas-connection-string
    JWT_SECRET=your-jwt-secret
-   CLOUDINARY_CLOUD_NAME=your-cloud-name
-   CLOUDINARY_API_KEY=your-api-key
-   CLOUDINARY_API_SECRET=your-api-secret
    CLIENT_URL=https://your-frontend-url.vercel.app
    ```
 
@@ -55,7 +68,7 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 
 ---
 
-## Part 3: Deploy the Frontend (Vercel — Recommended)
+## Part 4: Deploy the Frontend (Vercel — Recommended)
 
 1. Go to <https://vercel.com> and sign up with GitHub
 2. Click **Add New Project** → import this repo
@@ -71,7 +84,7 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 
 ---
 
-## Part 4: Alternative — Render
+## Part 5: Alternative — Render
 
 ### Backend on Render
 
@@ -82,7 +95,7 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
    - Build Command: `npm install`
    - Start Command: `npm start`
    - Plan: Free
-4. Add the same environment variables as listed in Part 2
+4. Add the same environment variables as listed in Part 3
 
 ### Frontend on Render
 
@@ -98,13 +111,15 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 
 ---
 
-## Part 5: Post-Deployment Checklist
+## Part 6: Post-Deployment Checklist
 
 - [ ] Backend health check responds at `GET /health`
 - [ ] User registration works on the deployed site
 - [ ] User login works
-- [ ] Create Profile — photo uploads to Cloudinary
+- [ ] Create Profile — all fields save correctly
+- [ ] Profile photo displays (images bundled in `dist/`)
 - [ ] View Profile — all fields display correctly
+- [ ] Edit Profile — changes save correctly (owner only)
 - [ ] Home page OSI stack shows member assignments
 - [ ] `CLIENT_URL` in backend matches the deployed frontend URL exactly (no trailing slash)
 - [ ] Test on a mobile device
@@ -115,11 +130,7 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 
 ### CORS errors
 
-`CLIENT_URL` in backend environment variables must exactly match your frontend URL including `https://` and with no trailing slash.
-
-### Images not uploading
-
-Verify all three Cloudinary variables are set correctly. Check the backend logs for the specific Cloudinary error message.
+`CLIENT_URL` in the backend environment variables must exactly match your frontend URL including `https://` and with no trailing slash.
 
 ### JWT errors after deploying
 
@@ -128,6 +139,10 @@ Clear browser localStorage and log in again. If it persists, verify `JWT_SECRET`
 ### Database connection timeout
 
 Ensure `0.0.0.0/0` is in MongoDB Atlas **Network Access**. Hosted services use dynamic IPs that narrow whitelist rules won't cover.
+
+### Images not showing in production
+
+Confirm the headshot files were committed to the repo before deploying. Vercel and Render bundle everything in `client/public/` into the static build.
 
 ---
 
@@ -157,4 +172,3 @@ git push origin main
 - Railway: <https://docs.railway.app/>
 - Render: <https://render.com/docs>
 - Vercel: <https://vercel.com/docs>
-- Cloudinary: <https://cloudinary.com/documentation>

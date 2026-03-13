@@ -21,14 +21,6 @@ const memberService = {
 
   deleteMember: (id) =>
     api.delete(`/members/${id}`).then(r => r.data),
-
-  uploadImage: (id, imageFile) => {
-    const formData = new FormData();
-    formData.append('image', imageFile);
-    return api.put(`/members/${id}/image`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    }).then(r => r.data);
-  }
 };
 
 export default memberService;

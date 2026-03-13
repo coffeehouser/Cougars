@@ -20,10 +20,25 @@ Output goes to `dist/`. Deploy the `dist/` folder to Vercel or any static host.
 
 ## Environment variable
 
-Create a `client/.env` file:
+The `.env.example` file has the correct default for local development. Copy it:
+
+```bash
+cp .env.example .env
+```
 
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
 Change the URL to your deployed backend when building for production.
+
+## Profile images
+
+Static image files live in `public/images/` and are served at the root path:
+
+- `public/images/headshots/` — member profile photos (e.g. `/images/headshots/darien.jpg`)
+- `public/images/gallery/` — event and gathering photos
+
+These folders are included in the production build automatically. Add headshot files here before running `npm run build` for deployment.
+
+See the root `README.md` for naming conventions and recommended image dimensions.

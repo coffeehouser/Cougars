@@ -27,11 +27,15 @@
   /* Text Colors */
   --text-primary: #F0EEF8;
   --text-secondary: #B0AEBF;
-  --text-muted: #7A788A;
-  --text-disabled: #4A4860;
+  --text-muted: #9E9CB2;       /* raised from #7A788A — WCAG AA on bg-card (≈4.8:1) */
+  --text-disabled: #4A4860;    /* non-text only (disabled inputs/placeholders — exempt) */
 
-  /* Semantic Colors */
-  --red-dark: #7a1a1a;
+  /* Semantic Colors — error uses amber (not red) for accessibility */
+  --error-text: #F5A623;       /* amber — 8.4:1 on bg-card, no red */
+  --error-bg: rgba(197, 120, 0, 0.12);
+  --error-border: rgba(197, 120, 0, 0.45);
+
+  --red-dark: #7a1a1a;         /* buttons only (background, never body text) */
   --red-medium: #c53030;
   --red-light: #fc8181;
 

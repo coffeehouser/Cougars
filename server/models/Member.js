@@ -67,10 +67,7 @@ const MemberSchema = new mongoose.Schema({
   },
   profileImage: {
     type: String,
-    default: '/default-profile.png'
-  },
-  profileImageCloudinaryId: {
-    type: String
+    default: '/images/headshots/default.jpg'
   },
   profileSlug: {
     type: String,

@@ -1,7 +1,6 @@
 const express = require('express');
 const memberController = require('../controllers/memberController');
 const auth = require('../middleware/auth');
-const { uploadCharacterImage } = require('../config/cloudinary');
 
 const router = express.Router();
 
@@ -19,11 +18,5 @@ router.get('/:id', memberController.getMemberById);
 router.post('/', auth, memberController.createMember);
 router.put('/:id', auth, memberController.updateMember);
 router.delete('/:id', auth, memberController.deleteMember);
-router.put(
-  '/:id/image',
-  auth,
-  uploadCharacterImage.single('image'),
-  memberController.uploadImage
-);
 
 module.exports = router;

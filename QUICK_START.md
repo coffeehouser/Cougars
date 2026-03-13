@@ -5,14 +5,15 @@ Get the Cyber Cougars OSI Showcase running locally in about 10 minutes.
 ## Prerequisites
 
 - Node.js 18+ installed
-- MongoDB Atlas account (free tier at <https://cloud.mongodb.com>)
-- Cloudinary account (free tier at <https://cloudinary.com>)
+- MongoDB — either a free [Atlas](https://cloud.mongodb.com) cluster or MongoDB 8 installed locally
 
 ## 1. Install Dependencies
 
+Run these from the `Cougars/` project root:
+
 ```bash
-# From the Cougars/ project root
 npm install
+cd server && npm install && cd ..
 cd client && npm install && cd ..
 ```
 
@@ -20,18 +21,27 @@ cd client && npm install && cd ..
 
 ### Backend — create `server/.env`
 
+Copy the template and fill in your values:
+
+```bash
+cp .env.example server/.env
+```
+
 ```env
 NODE_ENV=development
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_random_secret_key
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
 CLIENT_URL=http://localhost:5173
 ```
 
-### Frontend — create `client/.env`
+### Frontend — `client/.env` is already correct for local dev
+
+The file `client/.env.example` has the right default. Copy it if it doesn't exist:
+
+```bash
+cp client/.env.example client/.env
+```
 
 ```env
 VITE_API_URL=http://localhost:5000/api
@@ -39,28 +49,61 @@ VITE_API_URL=http://localhost:5000/api
 
 ## 3. Get Your Credentials
 
-### MongoDB Atlas
+### MongoDB Atlas (cloud option)
 
 1. Go to <https://cloud.mongodb.com> and create a free cluster
 2. Click **Connect** → **Drivers** → copy the connection string
 3. Replace `<password>` with your database user's password
-4. Append `/cyber-cougars` (or any DB name) before the `?` in the string
-5. In **Network Access**, add `0.0.0.0/0` to allow connections from anywhere
+4. Append `/cyber-cougars` before the `?retryWrites` part
+5. In **Network Access**, add `0.0.0.0/0` to allow all connections
 
-### Cloudinary
+### MongoDB Local (already installed)
 
-1. Go to <https://cloudinary.com/console>
-2. Copy **Cloud Name**, **API Key**, and **API Secret** from the dashboard
+If you installed MongoDB 8 locally, start the service:
+
+```bash
+# Windows — as a service
+net start MongoDB
+
+# Or run directly (create C:\data\db first)
+"C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe" --dbpath /c/data/db
+```
+
+Then use this as your `MONGODB_URI`:
+
+```env
+MONGODB_URI=mongodb://localhost:27017/cyber-cougars
+```
 
 ### JWT Secret
 
-Generate a secure random secret:
+Generate a secure random value:
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
 
-## 4. Run the App
+Paste the output as your `JWT_SECRET`.
+
+## 4. Add Profile Images
+
+Place headshot files in `client/public/images/headshots/`. Recommended: 800×800 px, square crop.
+
+```text
+client/public/images/headshots/
+  default.jpg   ← fallback when no photo is set
+  darien.jpg
+  josh.jpg
+  jazmine.jpg
+  cody.jpg
+  richard.jpg
+  mason.jpg
+  jeremy.jpg
+```
+
+Drop event/gathering photos in `client/public/images/gallery/`.
+
+## 5. Run the App
 
 ```bash
 # From Cougars/ root — starts both servers concurrently
@@ -70,29 +113,44 @@ npm run dev
 - Backend: <http://localhost:5000>
 - Frontend: <http://localhost:5173>
 
-## 5. Test It
+## 6. Test It
 
 1. Open <http://localhost:5173>
 2. Register an account
-3. Go to **Create Profile** and fill in your details
-4. Upload a profile photo
-5. Go home — your card should appear in the team grid and OSI stack
+3. Click **Create Profile** and fill in your details
+4. In the **Profile Photo Path** field enter `/images/headshots/yourname.jpg`
+5. Submit — your card should appear in the team grid and OSI stack on the home page
+6. Click your card to view your profile; click **Edit Profile** to make changes
 
 ## Troubleshooting
 
+**`mongod: command not found`**
+
+- Use the full path: `"C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe" --dbpath /c/data/db`
+- Or start it as a Windows service: `net start MongoDB`
+
+**`concurrently is not recognized`**
+
+- Run `npm install` from the `Cougars/` root to install the root dev dependency
+
 **Can't connect to MongoDB?**
 
-- Check Network Access in Atlas — your IP must be whitelisted
-- Verify the connection string is correct (no stray spaces)
+- Check Network Access in Atlas — your IP must be whitelisted (`0.0.0.0/0` for all)
+- For local: verify `mongod` is running and `MONGODB_URI=mongodb://localhost:27017/cyber-cougars`
 
-**Images not uploading?**
+**Edit Profile button missing?**
 
-- Double-check Cloudinary credentials in `.env`
-- Check the browser console for error details
+- You must be logged in as the account that created the profile
+- Log out and back in to refresh the JWT
+
+**Profile photo not showing?**
+
+- Confirm the file is in `client/public/images/headshots/`
+- Path in the form must start with `/images/headshots/`
 
 **CORS errors?**
 
-- Make sure `CLIENT_URL=http://localhost:5173` is set in `server/.env`
+- Ensure `CLIENT_URL=http://localhost:5173` is set exactly in `server/.env`
 
 ---
 
