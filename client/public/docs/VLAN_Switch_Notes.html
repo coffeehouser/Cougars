@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VLAN & Trunking — Switch Configuration Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700;800&display=swap');
+
+  :root {
+    --primary:     #7A0019;
+    --primary-dark:#5C0013;
+    --primary-light:#F9F0F0;
+    --text:        #333333;
+    --muted:       #555555;
+    --subtle:      #777777;
+    --border:      #CCCCCC;
+    --code-bg:     #1E1E1E;
+    --code-fg:     #D4D4D4;
+    --white:       #FFFFFF;
+    --page-bg:     #FAFAFA;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--page-bg);
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 56px 72px 72px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    min-height: 100vh;
+  }
+
+  /* ── Title Block ── */
+  .doc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .doc-subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .doc-meta {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--subtle);
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    border: none;
+    border-bottom: 3px solid var(--primary);
+    margin: 16px 0 28px;
+  }
+
+  .intro {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  /* ── Section Headings ── */
+  .section-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 40px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--primary-light);
+    letter-spacing: 0.3px;
+  }
+
+  .sub-heading {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 24px 0 8px;
+  }
+
+  .body-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+
+  /* ── Code Blocks ── */
+  .code-block {
+    background: var(--code-bg);
+    border-left: 3px solid var(--primary);
+    border-radius: 2px;
+    padding: 14px 18px;
+    margin: 12px 0 20px;
+    overflow-x: auto;
+  }
+
+  .code-block pre {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 12.5px;
+    color: var(--code-fg);
+    line-height: 1.7;
+    white-space: pre;
+  }
+
+  .code-block .comment { color: #6A9955; }
+  .code-block .cmd     { color: #9CDCFE; }
+  .code-block .kw      { color: #C586C0; }
+  .code-block .val     { color: #CE9178; }
+
+  /* ── Tables ── */
+  .tbl-wrap {
+    margin: 12px 0 24px;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  thead tr {
+    background: var(--primary);
+  }
+
+  thead th {
+    color: var(--white);
+    font-weight: 600;
+    padding: 9px 14px;
+    text-align: left;
+    letter-spacing: 0.3px;
+    font-size: 13px;
+  }
+
+  tbody tr:nth-child(odd)  { background: var(--primary-light); }
+  tbody tr:nth-child(even) { background: var(--white); }
+
+  tbody td {
+    padding: 8px 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tbody td:first-child {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 12.5px;
+    color: var(--primary-dark);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Override monospace for non-code first columns */
+  table.no-code tbody td:first-child {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13.5px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── Footer ── */
+  .doc-footer {
+    margin-top: 56px;
+    padding-top: 12px;
+    border-top: 2px solid var(--primary);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--subtle);
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; padding: 32px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Title -->
+  <div class="doc-title">VLAN &amp; TRUNKING — SWITCH CONFIGURATION NOTES</div>
+  <div class="doc-subtitle">Mid-State Technical College — Networking / CCNA Program</div>
+  <div class="doc-meta">Group Project Reference — Switch 1 &amp; Switch 2 Configuration</div>
+  <hr class="divider">
+  <p class="intro">This document summarizes the VLAN and trunking configuration performed on both switches during the group project. It covers VLAN design, EtherChannel setup, trunk configuration, access ports, management IP addressing, and SSH access — following the CCNA lab standards for this program.</p>
+
+  <!-- Section 1 -->
+  <div class="section-heading">1. VLAN Design</div>
+  <p class="body-text">The network was segmented into four VLANs to separate traffic by function. VLANs were created on both switches and named to reflect their purpose.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>VLAN</th><th>Name</th><th>Subnet</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>Main</td><td>192.168.10.0/24</td><td>Primary user PCs</td></tr>
+        <tr><td>20</td><td>Guest</td><td>192.168.20.0/24</td><td>Guest user PCs</td></tr>
+        <tr><td>30</td><td>Management</td><td>192.168.30.0/24</td><td>Switch management / SSH</td></tr>
+        <tr><td>40</td><td>Server</td><td>192.168.40.0/24</td><td>LAMP server (192.168.40.10)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body-text">VLAN names were assigned using the vlan database config mode:</p>
+  <div class="code-block"><pre>SW1(config)# vlan 10
+SW1(config-vlan)# name Main
+SW1(config-vlan)# vlan 20
+SW1(config-vlan)# name Guest
+SW1(config-vlan)# vlan 30
+SW1(config-vlan)# name Management
+SW1(config-vlan)# vlan 40
+SW1(config-vlan)# name Server</pre></div>
+
+  <!-- Section 2 -->
+  <div class="section-heading">2. Network Topology</div>
+  <div class="tbl-wrap">
+    <table class="no-code">
+      <thead><tr><th>Device</th><th>Role</th><th>Key Connections</th></tr></thead>
+      <tbody>
+        <tr><td>Switch 1 (CougarsSW1)</td><td>Core / Distribution</td><td>F0/1 → Server, F0/23-24 → SW2 EtherChannel, G0/1 → Router</td></tr>
+        <tr><td>Switch 2 (CougarsSW2)</td><td>Access Layer</td><td>F0/1–4 → PCs, F0/23-24 → SW1 EtherChannel</td></tr>
+        <tr><td>Router</td><td>Inter-VLAN Routing</td><td>G0/0/1 → SW1 G0/1 (Router-on-a-Stick)</td></tr>
+        <tr><td>LAMP Server</td><td>Server VLAN 40</td><td>192.168.40.10 on SW1 F0/1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section-heading">3. EtherChannel (LACP)</div>
+  <p class="body-text">F0/23 and F0/24 on both switches were bundled into a single logical link (Port-Channel 1) using LACP for redundancy and increased bandwidth. Both sides used <code style="font-family:'Source Code Pro',monospace;color:var(--primary-dark);font-size:12.5px;">mode active</code>.</p>
+  <div class="code-block"><pre><span class="comment">! Applied on BOTH switches</span>
+interface range fa0/23 - 24
+ channel-group 1 mode active
+exit
+
+interface port-channel 1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,40
+exit</pre></div>
+  <p class="body-text">Both F0/23 and F0/24 must have identical configuration (speed, duplex, trunk settings) or the channel will not form. Verify with:</p>
+  <div class="code-block"><pre>show etherchannel summary
+show interfaces port-channel1 trunk</pre></div>
+
+  <!-- Section 4 -->
+  <div class="section-heading">4. Trunk Port to Router (Router-on-a-Stick)</div>
+  <p class="body-text">Switch 1's G0/1 connects to the router as a trunk, carrying all four VLANs. The router uses sub-interfaces — one per VLAN — for inter-VLAN routing.</p>
+  <div class="code-block"><pre><span class="comment">! On Switch 1</span>
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,40
+exit</pre></div>
+  <p class="body-text">The router sub-interfaces are configured with dot1Q encapsulation to match each VLAN:</p>
+  <div class="code-block"><pre><span class="comment">! On Router</span>
+interface g0/0/1
+ no shutdown
+interface g0/0/1.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+interface g0/0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+interface g0/0/1.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+interface g0/0/1.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0</pre></div>
+
+  <!-- Section 5 -->
+  <div class="section-heading">5. Access Port Assignments</div>
+  <div class="sub-heading">Switch 2 — End User Ports</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Port</th><th>VLAN</th><th>Connected Device</th></tr></thead>
+      <tbody>
+        <tr><td>F0/1</td><td>VLAN 10 — Main</td><td>Main PC</td></tr>
+        <tr><td>F0/2</td><td>VLAN 20 — Guest</td><td>Guest PC</td></tr>
+        <tr><td>F0/3</td><td>VLAN 30 — Management</td><td>Management PC</td></tr>
+        <tr><td>F0/4</td><td>VLAN 40 — Server</td><td>Server VLAN device</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="code-block"><pre><span class="comment">! Example — repeat for F0/2 (vlan 20), F0/3 (vlan 30), F0/4 (vlan 40)</span>
+interface fa0/1
+ switchport mode access
+ switchport access vlan 10
+exit</pre></div>
+
+  <div class="sub-heading">Switch 1 — Server &amp; Management Ports</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Port</th><th>VLAN</th><th>Device</th></tr></thead>
+      <tbody>
+        <tr><td>F0/1</td><td>VLAN 40 — Server</td><td>LAMP Server (192.168.40.10)</td></tr>
+        <tr><td>F0/19</td><td>VLAN 10 — Main</td><td>Access port</td></tr>
+        <tr><td>F0/20</td><td>VLAN 20 — Guest</td><td>Access port</td></tr>
+        <tr><td>F0/21</td><td>VLAN 40 — Server</td><td>Access port</td></tr>
+        <tr><td>F0/22</td><td>VLAN 30 — Management</td><td>Management port (192.168.30.2)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section-heading">6. Management VLAN (VLAN 30)</div>
+  <p class="body-text">Each switch has a VLAN 30 SVI (Switched Virtual Interface) for remote management. A default gateway points to the router sub-interface.</p>
+  <div class="code-block"><pre><span class="comment">! Switch 1</span>
+interface vlan 30
+ ip address 192.168.30.2 255.255.255.0
+ no shutdown
+exit
+ip default-gateway 192.168.30.1
+
+<span class="comment">! Switch 2</span>
+interface vlan 30
+ ip address 192.168.30.3 255.255.255.0
+ no shutdown
+exit
+ip default-gateway 192.168.30.1</pre></div>
+
+  <!-- Section 7 -->
+  <div class="section-heading">7. SSH Remote Access</div>
+  <p class="body-text">Both switches were configured for SSH v2 access via the Management VLAN. Telnet was disabled on VTY lines.</p>
+  <div class="code-block"><pre>hostname CougarsSW1
+ip domain-name cougars.local
+crypto key generate rsa   <span class="comment">! Select 1024 or 2048 bits</span>
+ip ssh version 2
+username admin privilege 15 secret P@ssword01
+
+line vty 0 15
+ transport input ssh
+ login local
+exit</pre></div>
+  <p class="body-text">Connect via SSH from a PC on the Management VLAN:</p>
+  <div class="code-block"><pre>ssh -l admin 192.168.30.2   <span class="comment">! SW1</span>
+ssh -l admin 192.168.30.3   <span class="comment">! SW2</span></pre></div>
+
+  <!-- Section 8 -->
+  <div class="section-heading">8. Switch Security Credentials</div>
+  <div class="tbl-wrap">
+    <table class="no-code">
+      <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Enable Secret (encrypted)</td><td>P@ssword01</td></tr>
+        <tr><td>Enable Password</td><td>Cougars</td></tr>
+        <tr><td>VTY / SSH Password</td><td>P@ssword01</td></tr>
+        <tr><td>Local Username</td><td>admin (privilege 15)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="section-heading">9. Verification Commands</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Command</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        <tr><td>show vlan brief</td><td>VLAN names and port assignments</td></tr>
+        <tr><td>show interfaces trunk</td><td>Trunk ports and allowed VLANs</td></tr>
+        <tr><td>show etherchannel summary</td><td>EtherChannel status (look for P = in port-channel)</td></tr>
+        <tr><td>show ip interface brief</td><td>SVI IP addresses and up/down status</td></tr>
+        <tr><td>show run | include gateway</td><td>Default gateway setting</td></tr>
+        <tr><td>show ip ssh</td><td>SSH enabled and version</td></tr>
+        <tr><td>show ssh</td><td>Active SSH sessions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+  <div class="doc-footer">CCNA Group Project — Switch Configuration Reference &nbsp;|&nbsp; Mid-State Technical College</div>
+
+</div>
+</body>
+</html>

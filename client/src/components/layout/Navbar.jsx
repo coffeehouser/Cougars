@@ -16,6 +16,7 @@ const Navbar = () => {
           {isAuthenticated ? (
             <>
               <Link to="/" className="nav-link">Home</Link>
+              <a href="/docs/VLAN_Switch_Notes.html" target="_blank" rel="noreferrer" className="nav-link">Resources</a>
               <Link to="/my-profile" className="nav-link">My Profile</Link>
               <Link to="/profile/create" className="nav-link">Create Profile</Link>
               <div className="nav-user">
@@ -27,6 +28,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
+              <a href="/docs/VLAN_Switch_Notes.html" target="_blank" rel="noreferrer" className="nav-link">Resources</a>
               <Link to="/login" className="nav-link">Login</Link>
               <Link to="/register" className="nav-link">Register</Link>
             </>

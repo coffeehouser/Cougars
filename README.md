@@ -13,7 +13,6 @@ Each team member owns one or more OSI layers and contributed to a hands-on build
 | Member | Role | OSI Layer(s) |
 | --- | --- | --- |
 | Darien | Web Developer | Layer 7 — Application |
-| Josh | Web Developer | Layer 7 — Application |
 | Jazmine | Physical Network / SSH | Layer 1 — Physical |
 | Cody | VLAN / Trunking | Layer 2 — Data Link |
 | Richard | Routing / High Availability | Layer 3 — Network |
